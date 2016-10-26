@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Groupme Pensieve</title>
+    <script type="text/javascript" src="./scripts/groupmeparse.js"></script>
+
+    <link rel="stylesheet" href="css/app.css">
+    <link rel="stylesheet" href="css/foundation.css">
+</head>
+<body>
+
+<div class="top-bar">
+    <div class="top-bar-title">
+    <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+      <button class="menu-icon dark" type="button" data-toggle></button>
+    </span>
+        <strong>Groupme Pensieve</strong>
+    </div>
+    <div id="responsive-menu">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li><a href="getgroupme.html">Home</a></li>
+                <li><a href="getslideshow.html">Images</a></li>
+                <li><a href="gettext.html">Text</a></li>
+                <li><a href="getreverse.html">Reverse</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+        <script>
+            if(window.location.href.indexOf("=")!=-1) {
+                var accessToken = checkForParam(window.location.href,"at");
+            }
+            getGroupsAvailable(accessToken);
+
+        </script>
+
+    <div class="row">
+        <div class="large-12 columns">
+            <h1><center>Groupme Pensieve</center></h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="callout">
+                <p>Choose the group that you want to be looking at from the drop down below and select the options to filter from your million groupme messages to get just what you want!</p>
+                <div id="errorBar" color="red"></div>
+                <p><a href="index.html">Click here to start all over</a></p>
+            </div>
+        </div>
+    </div>
+
+    <form>
+        <div class="row">
+            <div class="large-12 columns">
+                <label>Group Name</label>
+                <select id="listOfGroups">
+
+                </select>
+            </div>
+            <div class="small-6 columns">
+                <label><b>Minimum</b> *hearts* given to the message</label>
+                <input type="number" id="popMin" value="30">
+                </div>
+            <div class="small-6 columns">
+                <label><b>Maximum</b> *hearts* given to the message</label>
+                <input type="number" id="popMax" value="140">
+            </div>
+            <div class="small-12 columns">
+                <label>Start date for gathering messages</label>
+                <input type="date" id="startdate" value="2016-01-01" min="2010-01-01">
+            </div>
+            <div class="large-12 columns">
+                <div id="submit" onclick="submitForGroupmeMessages()" class="success button">Show me my groupme messages!</div>
+            </div>
+        </div>
+    </form>
+    <div class="row">
+        <div class="large-12 columns">
+            <div class="callout">
+                <p><b> What's this all about!? </b><p>
+                <p>There were times when I loved some of the groupme messages that I received, and so did a lot of my friends!
+                These loved messages were those with the most "hearts" and there were parties and times when I wanted to just play all the pictures that
+                were most upvoted, but there was no way to filter out the noise on the unimportant messages.
+                That's when I decided to make groupmePensieve here, just so I could extract groupme messages based on their popularity ,
+                by mentioning the minimum and maximum hearts they received, and by pointing out the start date from when the messages need to be collected. I wondered if it would be of
+                any use to the rest of you groupme users, so here it is, on a website!
+            </div>
+            <div class="callout">
+                <p>Contact me on <a href="https://www.facebook.com/inchara.s">Facebook</a>/<a href="https://www.linkedin.com/in/incharashivalingaiah">LinkedIn</a>/<a href="https://twitter.com/incharas">Twitter</a> if you have any questions/comments - Inchara Shivalingaiah</p>
+            </div>
+
+        </div>
+        </div>
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-26050229-2', 'auto');
+      ga('send', 'pageview');
+
+    </script>
+    <script src="js/vendor/what-input.js"></script>
+</body>
+</html>

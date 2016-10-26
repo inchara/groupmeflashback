@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Groupme Pensieve</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/foundation.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <script type="text/javascript" src="whammy-master/whammy.js"></script>
+    <script type="text/javascript" src="./js/vendor/foundation.js"></script>
+    <script type="text/javascript" src="./js/vendor/what-input.js"></script>
+    <script type="text/javascript" src="./scripts/gmstats.js"></script>
+    <script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.gallerax-0.2.js"></script>
+    <script type="text/javascript" src="js/filter.js"></script>
+
+    <!--[if IE 9]><link href="css/ie9fix.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 8]><link href="css/ie8fix.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 7]><link href="css/ie7fix.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 6]><link href="css/ie6fix.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div class="top-bar">
+    <div class="top-bar-title">
+    <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+      <button class="menu-icon dark" type="button" data-toggle></button>
+    </span>
+        <strong>Groupme Pensieve</strong>
+    </div>
+    <div id="responsive-menu">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li><a href="getgroupme.html">Home</a></li>
+                <li><a href="getslideshow.html">Images</a></li>
+                <li><a href="gettext.html">Text</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div id="wrapper">
+    <div class="row">
+        <div class="callout">
+
+            <script>
+                saveVariablesForSlideshow();
+                fetchGroupmeMessages("stats");
+            </script>
+            <div id="stats"></div>
+        </div>
+    </div>
+</div>
+</div>
+
+</body>
+</html>

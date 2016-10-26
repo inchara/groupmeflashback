@@ -1,0 +1,26 @@
+#categories {
+	float: right;
+}
+	#categories a{
+		margin: -6px 0 0 0;
+		padding: 6px 10px 0 10px;
+		height: 31px;
+		display: block;
+	}
+	
+	#categories li {
+		float: left;
+		height: 31px;
+	}
+	
+	#nav ul {
+		margin-top: 8px;
+		margin-left: 30px;
+	}	
+	
+	#nav li {
+		float: left;
+	}
+
+
+

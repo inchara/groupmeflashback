@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Groupme Pensieve</title>
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/foundation.css" />
+    <link rel="stylesheet" type="text/css" href="css/app.css" />
+    <script type="text/javascript" src="./js/vendor/foundation.js"></script>
+    <script type="text/javascript" src="./js/vendor/what-input.js"></script>
+    <script type="text/javascript" src="scripts/groupmeparse.js"></script>
+    <script type="text/javascript" src="js/jquery-1.5.2.min.js"></script>
+    <script type="text/javascript" src="js/jquery.gallerax-0.2.js"></script>
+
+
+    <script type="text/javascript" src="whammy.js"></script>
+    <script type="text/javascript" src="scripts/videoparse.js"></script>
+    <!--[if IE 9]><link href="css/ie9fix.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 8]><link href="css/ie8fix.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 7]><link href="css/ie7fix.css" rel="stylesheet" type="text/css" /><![endif]-->
+    <!--[if IE 6]><link href="css/ie6fix.css" rel="stylesheet" type="text/css" /><![endif]-->
+
+</head>
+<body>
+<div class="top-bar">
+    <div class="top-bar-title">
+    <span data-responsive-toggle="responsive-menu" data-hide-for="medium">
+      <button class="menu-icon dark" type="button" data-toggle></button>
+    </span>
+        <strong>Groupme Pensieve</strong>
+    </div>
+    <div id="responsive-menu">
+        <div class="top-bar-left">
+            <ul class="dropdown menu" data-dropdown-menu>
+                <li><a href="getgroupme.html">Home</a></li>
+                <li><a href="getslideshow.html">Images</a></li>
+                <li><a href="gettext.html">Text</a></li>
+                <li><a href="getreverse.html">Reverse</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="large-12 columns">
+        <div class="callout">
+            <div id="wrapper">
+                <script>
+                    saveVariablesForSlideshow();
+                </script>
+
+
+
+                <div id="gallery">
+                    <!-- start -->
+
+                    <div id="bigImageOutput">
+                        <!--img src="images/1.jpg" alt="" /-->
+                    </div>
+
+                    <div id="captions">
+
+                        <div id="nav">
+                            <ul>
+                                <li><a href="#" class="navFirst">[ &lt;&lt; ]</a></li>
+                                <li><a href="#" class="navPrevious">[ &lt; ]</a></li>
+                                <li><a href="#" class="navNext">[ &gt; ]</a></li>
+                                <li><a href="#" class="navLast">[ &gt;&gt; ]</a></li>
+                                <li><a href="#" class="navStopAdvance">[ Stop ]</a></li>
+                                <li><a href="#" class="navPlayAdvance active">[ Play ]</a></li>
+                            </ul>
+                        </div>
+
+                        <span class="line"><div id="firstIntro"></div></span>
+
+                        <br class="clear" />
+
+                        <span class="line2"><div id="secIntro"></div></span>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="large-12 columns">
+                <div id="videoSection" style="visibility:hidden">
+                    <div class="callout">
+                        <center>
+                            <div class="success button" id="createvideo"><b>Generate Video</b></div>
+                            <br>
+                            <div id="videoPlace">
+
+                            </div>
+                            <br>
+                            <a style="visibility:hidden" id="download" download="GroupmePensieve.webm">Download Video</a>
+
+                            <canvas id="canvas" style="display:none"></canvas>
+                            <div id="status"></div>
+                            <div><script>generateVideo()</script></div>
+                        </center>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="large-12 columns">
+                <div class="callout">
+                    <ul class="thumbnails category1">
+                        <script>fetchGroupmeMessages("oldtonew");</script>
+                        <div id="imageList"></div>
+                        <!--images here-->
+                    </ul>
+
+                    <br class="clear" />
+                </div>
+            </div>
+        </div>
+</div>
+    </div>
+</body>
+</html>

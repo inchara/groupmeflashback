@@ -1,0 +1,19 @@
+
+
+	#categories li {
+		margin: 0;
+		padding: 0;
+		display: block;
+		height: 31px;
+		float: left;
+	}	
+
+	
+	#nav ul {
+		margin-top: 8px;
+		margin-left: 30px;
+	}	
+	
+	#nav li {
+		float: left;
+	}
