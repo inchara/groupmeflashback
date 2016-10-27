@@ -34,7 +34,7 @@ function generateVideo() {
 
     createvideo.addEventListener("click", function() {
         start_time = +new Date;
-        document.getElementById('status').innerHTML = "Working... Please Wait.";
+        document.getElementById('status').innerHTML = "Working... Please Wait. If there are lots of pictures, this is going to take a while - You could come back to it in some time.";
 
         ctx = 0;
 
@@ -116,22 +116,13 @@ function compileVideo(index) {
     var img = imgArray[index];
     var dx=0;
     var imageWidth = canvas.width, imageHeight = imagePartHeight;
-    if (img.height > imagePartHeight) {// TODO : Inch - change this to img.width < canvas.width
+    if (img.height > imagePartHeight) {
         imageWidth = (img.width/img.height) * imagePartHeight;
         imageHeight = imagePartHeight;
         dx = (canvas.width - imageWidth) / 2;
-    } /*else if (img.height > imagePartHeight && img.width < canvas.width ) {
-        imageHeight = (img.height/img.width) * canvas.width; // scaled down
-        imageWidth = canvas.width;
     }
-/*
-    context.clearRect(0,0,context.canvas.width,context.canvas.height);
-    context.globalAlpha = 0.8;
-    context.drawImage(img, dx, 0, img.width, img.height, 0, 0, canvas.width, imagePartHeight);
-    addText(filesarr[index].text);
 
-    video.add(context);*/
-
+    var videoSpeed = document.getElementById("videoSpeed").value;
     context.globalAlpha = 1;
     context.fillStyle = "white";
     context.fillRect(0,0,context.canvas.width,context.canvas.height);
@@ -141,12 +132,21 @@ function compileVideo(index) {
     context.drawImage(img, 0, 0, img.width, img.height, dx, 0, /*canvas.width*/imageWidth, imagePartHeight);
 
     addText("  " + filesarr[index].text);
+    if (videoSpeed==0 || videoSpeed == 1) {
+        // Normal
+        for (iterator=0; iterator<4; iterator++) {
+                    video.add(context);
+        }
 
-    video.add(context);
-    video.add(context);
-    video.add(context);
-    video.add(context);
-    video.add(context);
+    } else if (videoSpeed==2) {
+        // Super fast so don't add context
+    } else if (videoSpeed == 3) {
+        // Super slow , add it five more times than you would normally
+
+        for (iterator=0; iterator<20; iterator++) {
+            video.add(context);
+        }
+    }
     video.add(context);
     video.add(context);
     video.add(context);
