@@ -223,7 +223,7 @@ function showBigSlideShowIntro(message) {
 // Function to print the group me message so we know what we got.
 function processMessage(message, index) {
 
-    if (message.favorited_by.length > popMin && message.favorited_by.length < popMax) {
+    if (message.favorited_by.length >= popMin && message.favorited_by.length < popMax) {
         if (textMode == true) {
             if(message.attachments.length == 0) {
                 outputMessageDetails("", message.created_at,message.favorited_by.length,message.text, message.name);

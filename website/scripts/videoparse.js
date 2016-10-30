@@ -35,6 +35,7 @@ function generateVideo() {
     createvideo.addEventListener("click", function() {
         start_time = +new Date;
         document.getElementById('status').innerHTML = "Working... Please Wait. If there are lots of pictures, this is going to take a while - You could come back to it in some time.";
+        document.getElementById('download').style.visibility = "hidden";
 
         ctx = 0;
 
