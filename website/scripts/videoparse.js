@@ -206,6 +206,6 @@ function outputVideo(videoFile) {
   //document.getElementById('videoPlace').innerHTML = '<video id="actualVideo" controls autoplay loop src="' + url + '"></video>';
   document.getElementById('download').style.visibility = "visible";
   document.getElementById('download').href = url;
-  document.getElementById('status').innerHTML = "Compiled Video in " + (end_time - start_time) + "ms, file size: " + Math.ceil(videoFile.size / 1024) + "KB";
+  document.getElementById('status').innerHTML = "Compiled Video in " + (end_time - start_time) + "ms, file size: " + Math.ceil(videoFile.size / 1024) + "KB. After downloading the video, you can upload and customize the video on youtube <a href=\"https://www.youtube.com/upload\">here</a>";
 
 }
