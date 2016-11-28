@@ -6,3 +6,4 @@ This app (that I call groupmePensieve) present here - https://inchuition.com/pen
 
 Once you're done with that, you can create a video from the past images, almost as if you can have a whole memory from a groupme conversation saved with you! You could show it off at a party, or just have it for the sake of nostalgia. After all, this is the pensieve.
 
+This uses open source tools such as whammy to create videos and html foundation css for the style.
