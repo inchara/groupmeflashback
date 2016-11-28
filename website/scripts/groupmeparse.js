@@ -21,6 +21,7 @@ var numProcessed = 0;
 var order = "oldtonew";
 var videoMode=false;
 var allImages=new Array();
+var failedImages=[];
 
 // Following are needed to get the slideshow ready
 var popMin=0;
@@ -349,6 +350,10 @@ function outputMessageDetails(url, createdat, numFavorited, captionInside, perso
     textToWrite= " &hearts; " +  numFavorited + " &hearts;&nbsp;&nbsp;&nbsp;" + getFormattedTime(createdat) + "&nbsp;&nbsp;&nbsp;&nbsp;" + captionInside + " - " + personName + "\"";
     textOutput += textToWrite;
     var obj = {};
+    // Weird hack for now to exclude this picture that somehow gets a forbidden error and doesn't exist anymore :(
+    if (url.includes("4a14c57a23e94f9a94e5a1bc8cbee6b9")) {
+        return;
+    }
     obj["url"] = url;
     obj["text"] = "♥ " + numFavorited + " ♥" + "\n" + getFormattedTime(createdat) + "\n" + captionInside + "\n" + personName;
     allImages.push(obj);

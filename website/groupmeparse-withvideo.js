@@ -336,7 +336,6 @@ function startDisplayingImages() {
 
 function outputMessageDetails(url, createdat, numFavorited, captionInside, personName) {
     var textOutput="";
-    allImages.push(url);
     if(!textMode) {
         textOutput = "<li><img src=\""+url+"\"" + " title=\";";
     } else {
@@ -348,6 +347,7 @@ function outputMessageDetails(url, createdat, numFavorited, captionInside, perso
     textOutput += " &hearts; " +  numFavorited + " &hearts;&nbsp;&nbsp;&nbsp;" + getFormattedTime(createdat) + "&nbsp;&nbsp;&nbsp;&nbsp;" + captionInside + " - " + personName + "\"";
 
     textOutput += " alt=\"\"/></li>";
+    allImages.push(url);
     writeGroupMeMsgs(textOutput);
 }
 

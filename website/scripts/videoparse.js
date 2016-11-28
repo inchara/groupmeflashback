@@ -1,6 +1,7 @@
 
 var imgArray = new Array();
 var filesarr;
+var errorredPicIndices=[];
 var ctx = 0;
 var video ;
 var context;
@@ -47,7 +48,7 @@ function generateVideo() {
         if(filesarr.length>0){
             //loop through them and process
             for(var i = 0 ; i < filesarr.length; i++) {
-                if(filesarr[i].url.match(/*.jpeg*/)){
+                if(filesarr[i].url.match(/*.jpeg*/) || filesarr[i].url.match(/*.png*/)){
                     process(filesarr[i],i);
 
                 } else {
@@ -88,7 +89,7 @@ function process(file,index) {
                 imgArray[index] = img;
 
                 ctx++;
-                if(ctx==filesarr.length){
+                if(ctx==filesarr.length - errorredPicIndices.length){
                   compileAllVideos();
                 }
         };
@@ -115,18 +116,31 @@ function process(file,index) {
         reader.readAsDataURL(blob);
       }
     };
+    xhr.onerror= function(e) {
+        // In case there's a time out error, you still want to stitch the rest of the images together.
+        errorredPicIndices+=index;
+        if(ctx==filesarr.length - errorredPicIndices.length){
+          compileAllVideos();
+        }
+        console.error("Error fetching " + file.url + "  Exception " + e);
+    };
     xhr.send();
+    if (xhr.status == 403) {
+        errorredPicIndices+= index;
+    }
 }
 
 
 function compileAllVideos() {
         //var timesMovedBar = 1;
         for(i=imgArray.length-1 ; i>= 0;i--) {
-            compileVideo(i);
-            /*if (100*(imgArray.length-i)/imgArray.length > timesMovedBar*10) {
-                moveProgressBar();
-                timesMovedBar++;
-            }*/
+            if(errorredPicIndices.indexOf(i) < 0) {
+                compileVideo(i);
+                /*if (100*(imgArray.length-i)/imgArray.length > timesMovedBar*10) {
+                    moveProgressBar();
+                    timesMovedBar++;
+                }*/
+            }
         }
 
     var byteArray;
@@ -135,6 +149,9 @@ function compileAllVideos() {
 }
 function compileVideo(index) {
     var img = imgArray[index];
+    if (!img) {
+        return;
+    }
     var dx=0;
     var imageWidth = canvas.width, imageHeight = imagePartHeight;
     if (img.height > imagePartHeight) {
