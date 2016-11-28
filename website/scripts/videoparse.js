@@ -45,11 +45,11 @@ function generateVideo() {
 
         //if we have images loaded
         if(filesarr.length>0){
-
             //loop through them and process
             for(var i = 0 ; i < filesarr.length; i++) {
                 if(filesarr[i].url.match(/*.jpeg*/)){
                     process(filesarr[i],i);
+
                 } else {
                     document.getElementById('status').innerHTML = "This file does not seem to be a image.";
                 }
@@ -60,6 +60,20 @@ function generateVideo() {
         }
 
     }, false);
+}
+
+function moveProgressBar() {
+    var elem = document.getElementById("myBar");
+    var width = 1;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++;
+            elem.style.width = width + '%';
+        }
+    }
 }
 
 /* main process function */
@@ -106,21 +120,31 @@ function process(file,index) {
 
 
 function compileAllVideos() {
+        //var timesMovedBar = 1;
         for(i=imgArray.length-1 ; i>= 0;i--) {
             compileVideo(i);
+            /*if (100*(imgArray.length-i)/imgArray.length > timesMovedBar*10) {
+                moveProgressBar();
+                timesMovedBar++;
+            }*/
         }
 
     var byteArray;
     video.compile(byteArray, outputVideo );
+    //moveProgressBar();
 }
 function compileVideo(index) {
     var img = imgArray[index];
     var dx=0;
     var imageWidth = canvas.width, imageHeight = imagePartHeight;
     if (img.height > imagePartHeight) {
-        imageWidth = (img.width/img.height) * imagePartHeight;
+        imageWidth = Math.floor( (img.width/img.height) * imagePartHeight);
         imageHeight = imagePartHeight;
-        dx = (canvas.width - imageWidth) / 2;
+        if (canvas.width > imageWidth) {
+            dx = Math.floor((canvas.width - imageWidth) / 2);
+        }
+    } else if(img.width > imageWidth) {
+        imageHeight = (img.height/img.width) * imageWidth;
     }
 
     var videoSpeed = document.getElementById("videoSpeed").value;

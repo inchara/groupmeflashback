@@ -170,7 +170,8 @@ function writeGroupOptions(groupsList) {
     var endForm="</option>";
     var printedGroupList ="";
     for(index in groupsList) {
-        printedGroupList = printedGroupList + startForm + groupsList[index].id + "\">" + groupsList[index].name + endForm;
+        printedGroupList = printedGroupList + startForm + groupsList[index].id + "\">" + groupsList[index].name +
+                    " ( " + groupsList[index].members.count + " ) " + endForm;
     }
 
     document.getElementById("listOfGroups").innerHTML = printedGroupList;
